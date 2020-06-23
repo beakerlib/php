@@ -1,0 +1,13 @@
+summary: Library with various utility functions for php tests
+contact:
+- David Kutalek <dkutalek@redhat.com>
+component:
+- php
+test: ./runtest.sh
+require:
+- lsof
+- library(httpd/http)
+- library(distribution/RpmSnapshot)
+recommend:
+- php
+duration: 5m
