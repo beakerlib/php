@@ -197,8 +197,9 @@ true <<'=cut'
 
 =head2 phpMainPackage
 
-Searches in $PACKAGES $COLLECTIONS for php main package, that is the one
-containing mod_php and called 'php' in the simplest case.
+Searches in $PACKAGES $COLLECTIONS for php main package.
+That is the one that provides mod_php or recommends php-fpm (since Fedora 33).
+It's called 'php' in the simplest case.
 
 =over
 
@@ -233,12 +234,19 @@ phpMainPackage () {
                 rlRun '[ ! -z "$php_MOD_PHP_CONF_MODULES" ]' 0 "phpMainPackage: php_MOD_PHP_CONF_MODULES=$php_MOD_PHP_CONF_MODULES"
             fi
             return 0
+        elif rpm -q --recommends $P | grep 'php-fpm'; then
+             php_RPM=$P
+             rlPass "phpMainPackage: php_RPM=$php_RPM"
+             php_BIN=$(rpm -ql ${php_RPM}-cli | grep bin/php$)
+             rlPass "phpMainPackage: php_BIN=$php_BIN"
+             php_INI="$(rpm -ql ${php_RPM}-common | grep 'php.ini$' | grep -v 'register\.content' | head -1)"
+             rlRun '[ ! -z "$php_INI" ]' 0 "phpMainPackage: php_INI=$php_INI"
+             return 0
         fi
     done
     rlFail "phpMainPackage: not found, php_RPM, php_BIN, php_INI, php_MOD_PHP_CONF and php_MOD_PHP_CONF_MODULES undefined"
     return 1
 }
-
 
 true <<'=cut'
 =pod
