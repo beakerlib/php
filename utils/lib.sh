@@ -234,7 +234,7 @@ phpMainPackage () {
                 rlRun '[ ! -z "$php_MOD_PHP_CONF_MODULES" ]' 0 "phpMainPackage: php_MOD_PHP_CONF_MODULES=$php_MOD_PHP_CONF_MODULES"
             fi
             return 0
-        elif rpm -q --recommends $P | grep 'php-fpm'; then
+        elif rpm -q --recommends $P | grep 'php.*-fpm'; then
              php_RPM=$P
              rlPass "phpMainPackage: php_RPM=$php_RPM"
              php_BIN=$(rpm -ql ${php_RPM}-cli | grep bin/php$)
