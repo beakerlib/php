@@ -1,0 +1,10 @@
+Owner:           David Kutalek <dkutalek@redhat.com>
+Name:            /CoreOS/php/Library/upstream
+TestVersion:     1.0
+Path:            /mnt/tests/CoreOS/php/Library/upstream
+Description:     Library for running and evaluating upstream tests
+Type:            Library
+TestTime:        5m
+RhtsRequires:    rpm-build yum-utils
+Provides:        library(php/upstream)
+License:         GPLv2

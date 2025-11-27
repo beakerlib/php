@@ -1,0 +1,16 @@
+summary: Library for running and evaluating upstream tests
+description: ''
+contact: David Kutalek <dkutalek@redhat.com>
+component: []
+test: ./runtest.sh
+framework: beakerlib
+require:
+  - rpm-build
+  - yum-utils
+duration: 5m
+enabled: true
+tag: []
+extra-nitrate: TC#0273470
+extra-summary: '[phpUp] Library for running and evaluating upstream PHP tests (php/upstream)'
+extra-task: /CoreOS/php/Library/upstream
+id: 331d55e6-af4e-4f80-b104-aad6cfeadb4f
