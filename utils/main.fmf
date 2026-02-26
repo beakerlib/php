@@ -8,6 +8,4 @@ require:
 - lsof
 - library(httpd/http)
 - library(distribution/RpmSnapshot)
-recommend:
-- php
 duration: 5m
