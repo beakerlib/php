@@ -77,7 +77,6 @@ Path to php-fpm's www error log file.
 which php-fpm > /dev/null 2>&1 && phpFPM_CONFDIR=$(rpm -qf `which php-fpm` -ql | grep 'php-fpm.d$' | grep '/etc/' | grep -v '/register.content/')
 test -n "$phpFPM_CONFDIR" && phpFPM_CONF=$(rpm -qf `which php-fpm` -ql | grep 'php-fpm.conf$' | grep '/etc/' | grep -v '/register.content/' | grep -v 'nginx')
 test -n "$phpFPM_CONFDIR" && phpFPM_LOGDIR=$(rpm -qf `which php-fpm` -ql | grep '/log/php-fpm' | grep -v '/register.content/')
-test -n "$phpFPM_LOGDIR" && test ! -d "$phpFPM_LOGDIR" && mkdir -p "$phpFPM_LOGDIR"
 test -n "$phpFPM_CONFDIR" && phpFPM_ERROR_LOG=${phpFPM_LOGDIR}/www-error.log
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
